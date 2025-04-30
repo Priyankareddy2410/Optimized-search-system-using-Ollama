@@ -1,60 +1,75 @@
 ![image](https://github.com/user-attachments/assets/1d2d6013-8f49-4306-95be-38f3e3743b24)
-📘 Optimized Hybrid Search System
-A powerful, privacy-focused hybrid search system combining semantic (FAISS) and lexical (BM25) search to extract intelligent answers from large text documents using Ollama LLM (phi3 or any local model).
 
-🔧 Features
-🔍 Combines BM25 (lexical) + FAISS (semantic) search
 
-⚙️ Local Ollama LLM (phi3:latest by default)
 
-📚 Embedding generation with caching
 
-⚡ Asynchronous document processing
+🧠 Optimized Hybrid Search System
+A privacy-first hybrid search engine that combines semantic search (via FAISS & embeddings) and lexical search (via BM25) to intelligently retrieve and answer queries from large text documents using a local Ollama LLM.
 
-🧠 LRU caching for repeated questions
+🚀 Key Features
+🔎 Dual Search Engine: Combines BM25 (exact term matching) and FAISS (vector similarity) for better relevance.
 
-🔐 Offline & privacy-respecting architecture
+🧱 Document Chunking: Splits and preprocesses large documents for efficient indexing.
 
-📦 Requirements
+🧠 Ollama LLM Integration: Uses phi3:latest (or any local model) for generating answers.
+
+🧰 Asynchronous Processing: Faster loading with async operations.
+
+♻️ LRU Caching: Caches repeated LLM queries to improve response time.
+
+🔐 Runs Locally: No cloud usage—ideal for sensitive or proprietary data.
+
+🧑‍💻 Installation
+Prerequisites
 Python 3.7+
 
-ollama installed locally → https://ollama.com
+Ollama (Download from ollama.com)
 
-Python packages in requirements.txt
+Setup
 
-📥 Installation
-bash
-Copy
-Edit
 git clone https://github.com/your-username/your-repo-name.git
 cd your-repo-name
 pip install -r requirements.txt
-📂 Prepare Your Files
-Place your .txt documents in the working directory.
-In the script, edit this line:
+📁 Preparing Your Documents
+Place your .txt files in the project directory.
+Update the files list in the Python script:
 
-python
-Copy
-Edit
-files = ["path_to_your_file_1.txt", "path_to_your_file_2.txt"]
-Replace with actual paths, e.g.:
 
-python
-Copy
-Edit
 files = ["docs/report1.txt", "docs/manual.txt"]
-Also replace [company] in the script with your actual org/project name.
+Also, replace placeholder text like [company] with your actual organization or context.
 
+▶️ Running the Search
 
 python hybrid-search.py
+You'll be prompted to enter your query.
 
-Interact with it:
-Type your question when prompted
-Type quit to exit
+Type quit to exit the session.
+
+🧩 Project Architecture
+
+           User Query
+                │
+      ┌─────────┴──────────┐
+      ▼                    ▼
+Lexical Search        Semantic Search
+   (BM25)          (FAISS + Embeddings)
+      │                    │
+      └────────┬───────────┘
+               ▼
+   Combined Weighted Context
+               ▼
+        Ollama (phi3:latest)
+               ▼
+        Generated Answer
 
 
-Project Flow
-If the image doesn't render on GitHub, upload it to your repo and update the filename above accordingly.
+🔐 Why Local Matters
+This solution is 100% offline. It does not send any data to external APIs or cloud services—perfect for secure environments with confidentiality requirements.
 
-Privacy & Security
-This project is designed for offline use. It does not upload data to any cloud service, ensuring maximum privacy for sensitive or proprietary documents.
+💡 Example Use Cases
+Internal enterprise knowledge search
+
+Legal or healthcare document querying
+
+Offline AI assistants for local data
+
