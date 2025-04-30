@@ -51,12 +51,12 @@ Type quit to exit the session.
                 │
       ┌─────────┴──────────┐
       ▼                    ▼
-Lexical Search        Semantic Search
-   (BM25)          (FAISS + Embeddings)
+    Lexical Search        Semantic Search
+    (BM25)          (FAISS + Embeddings)
       │                    │
       └────────┬───────────┘
                ▼
-   Combined Weighted Context
+    Combined Weighted Context
                ▼
         Ollama (phi3:latest)
                ▼
