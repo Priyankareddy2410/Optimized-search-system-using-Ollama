@@ -1,83 +1,60 @@
 ![image](https://github.com/user-attachments/assets/1d2d6013-8f49-4306-95be-38f3e3743b24)
+📘 Optimized Hybrid Search System
+A powerful, privacy-focused hybrid search system combining semantic (FAISS) and lexical (BM25) search to extract intelligent answers from large text documents using Ollama LLM (phi3 or any local model).
 
-🔍 Optimized Hybrid Search System using AI (FAISS + BM25 + Ollama)
-This project implements a hybrid information retrieval system that combines semantic search (FAISS + embeddings) and lexical search (BM25). It enables querying large text documents locally and generates context-aware responses using a local language model served via Ollama.
+🔧 Features
+🔍 Combines BM25 (lexical) + FAISS (semantic) search
 
-🚀 Features
-Hybrid Search: Combines semantic and lexical scoring for accurate retrieval
+⚙️ Local Ollama LLM (phi3:latest by default)
 
-FAISS-based Embeddings: Fast vector similarity search using local embeddings
+📚 Embedding generation with caching
 
-BM25 Scoring: Traditional keyword-based document ranking
+⚡ Asynchronous document processing
 
-AI-Powered Answering: Uses Ollama with phi3:latest or any installed model for generating natural language responses
+🧠 LRU caching for repeated questions
 
-Local-first & Secure: Ideal for proprietary, sensitive document handling
+🔐 Offline & privacy-respecting architecture
 
-Dynamic Weighting: Balances semantic and lexical relevance scores automatically
-
-Async Processing & Caching: Fast, responsive interactions with minimal recomputation
-
-🧰 Requirements
+📦 Requirements
 Python 3.7+
 
-Ollama installed locally: https://ollama.com
+ollama installed locally → https://ollama.com
 
-Install dependencies:
+Python packages in requirements.txt
 
+📥 Installation
 bash
 Copy
 Edit
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
 pip install -r requirements.txt
-📂 Usage
-Prepare Text Files:
-Place your .txt documents in your working directory. In the script, replace:
+📂 Prepare Your Files
+Place your .txt documents in the working directory.
+In the script, edit this line:
 
 python
 Copy
 Edit
 files = ["path_to_your_file_1.txt", "path_to_your_file_2.txt"]
-with actual file paths like:
+Replace with actual paths, e.g.:
 
 python
 Copy
 Edit
 files = ["docs/report1.txt", "docs/manual.txt"]
-Customize for Your Use Case:
-Replace any placeholder like [company] with your organization or scenario-specific context.
+Also replace [company] in the script with your actual org/project name.
 
-Run the Script:
 
-bash
-Copy
-Edit
 python hybrid-search.py
-Interact with It:
 
-Type your query when prompted.
+Interact with it:
+Type your question when prompted
+Type quit to exit
 
-Type quit to exit the session.
 
-🧠 Project Flow
-pgsql
-Copy
-Edit
-User Query
-   │
-   ├─> Lexical Search (BM25)
-   │       │
-   │       └──┐
-   │          └────┐
-   └─> Semantic Search (FAISS + Embeddings)
-               │
-   ┌───────────┘
-   ▼
-Combine Semantic + Lexical Scores
-   │
-   ▼
-Ollama (phi3:latest or other local LLM)
-   │
-   ▼
-Generated Answer
-🔒 Note on Privacy
-This solution is designed for offline/local usage. It does not upload data to any cloud services, making it suitable for secure environments.
+Project Flow
+If the image doesn't render on GitHub, upload it to your repo and update the filename above accordingly.
+
+Privacy & Security
+This project is designed for offline use. It does not upload data to any cloud service, ensuring maximum privacy for sensitive or proprietary documents.
