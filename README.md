@@ -1,43 +1,83 @@
-# Optimized Hybrid Search Script
+![image](https://github.com/user-attachments/assets/1d2d6013-8f49-4306-95be-38f3e3743b24)
 
-This Python script implements an advanced hybrid search system that combines semantic and lexical search techniques to process and retrieve information from large text documents. It uses Ollama for generating comprehensive answers based on the retrieved context.
+🔍 Optimized Hybrid Search System using AI (FAISS + BM25 + Ollama)
+This project implements a hybrid information retrieval system that combines semantic search (FAISS + embeddings) and lexical search (BM25). It enables querying large text documents locally and generates context-aware responses using a local language model served via Ollama.
 
-## Features
+🚀 Features
+Hybrid Search: Combines semantic and lexical scoring for accurate retrieval
 
-- Hybrid search combining semantic (FAISS) and lexical (BM25) search
-- Document splitting and preprocessing
-- Embedding generation and caching
-- Asynchronous processing
-- LRU caching for Ollama responses
-- Dynamic weight adjustment between semantic and lexical search
-- Local processing suitable for sensitive or proprietary information
+FAISS-based Embeddings: Fast vector similarity search using local embeddings
 
-## Requirements
+BM25 Scoring: Traditional keyword-based document ranking
 
-- Python 3.7+
-- See requirements.txt for Python package dependencies
-- Ollama installed locally (https://ollama.com/)
+AI-Powered Answering: Uses Ollama with phi3:latest or any installed model for generating natural language responses
 
-## Installation
+Local-first & Secure: Ideal for proprietary, sensitive document handling
 
-1. Clone this repository
-2. Install the required Python packages:
-   ```
-   pip install -r requirements.txt
-   ```
-3. Ensure Ollama is installed. This version has "phi3:latest" model as the default.
+Dynamic Weighting: Balances semantic and lexical relevance scores automatically
 
-## Usage
+Async Processing & Caching: Fast, responsive interactions with minimal recomputation
 
-1. Place your text documents in the specified directory (replace the paths 'path_to_your_file_1.txt' and 'path_to_your_file_2.txt' with your own .txt document paths).
-2. Replace "[company]" in the script for your personalized use case.
-3. Run the script:
-   ```
-   python hybrid-search.py
-   ```
-4. Enter your questions when prompted
-5. Type 'quit' to exit the program
+🧰 Requirements
+Python 3.7+
 
-## Note
+Ollama installed locally: https://ollama.com
 
-This script is designed for local processing and may be slower than cloud-based solutions, especially for large document sets. However, it provides a high level of privacy and control over the data processing pipeline.
+Install dependencies:
+
+bash
+Copy
+Edit
+pip install -r requirements.txt
+📂 Usage
+Prepare Text Files:
+Place your .txt documents in your working directory. In the script, replace:
+
+python
+Copy
+Edit
+files = ["path_to_your_file_1.txt", "path_to_your_file_2.txt"]
+with actual file paths like:
+
+python
+Copy
+Edit
+files = ["docs/report1.txt", "docs/manual.txt"]
+Customize for Your Use Case:
+Replace any placeholder like [company] with your organization or scenario-specific context.
+
+Run the Script:
+
+bash
+Copy
+Edit
+python hybrid-search.py
+Interact with It:
+
+Type your query when prompted.
+
+Type quit to exit the session.
+
+🧠 Project Flow
+pgsql
+Copy
+Edit
+User Query
+   │
+   ├─> Lexical Search (BM25)
+   │       │
+   │       └──┐
+   │          └────┐
+   └─> Semantic Search (FAISS + Embeddings)
+               │
+   ┌───────────┘
+   ▼
+Combine Semantic + Lexical Scores
+   │
+   ▼
+Ollama (phi3:latest or other local LLM)
+   │
+   ▼
+Generated Answer
+🔒 Note on Privacy
+This solution is designed for offline/local usage. It does not upload data to any cloud services, making it suitable for secure environments.
